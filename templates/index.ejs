@@ -7,6 +7,20 @@
   <body>
 	<h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    
+
+	<form id="graphData">
+		<textarea name="data"></textarea>
+		<input type="submit" name="">
+	</form>
+
   </body>
+  <script type="text/javascript">
+  	graphData.onsubmit = function () {
+  		var graphData = new XMLHttpRequest();
+			
+			graphData.open("POST", "/graph", true);
+			graphData.send(JSON.stringify({data: this.elements.data.value}));
+			this.elements.data.value = '';
+  	}
+  </script>
 </html>
